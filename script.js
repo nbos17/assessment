@@ -1,6 +1,11 @@
-
+// See All Animals On Click Button
 $('#seeAll').on('click', function() {
 
+	$('#animalAction').empty();
+	$('#form').css("display", "none");
+	$('#searchBarDisplay').css("display", "none");
+
+	
 	const url = "https://animalrestapi.azurewebsites.net/Animal/List?candidateID=7960d0e9-8701-4f34-906d-026ea6a3c10a";
 	const headers = {
 		"Content-Type" : "application/x-www-form-urlencoded"
@@ -41,8 +46,18 @@ $('#seeAll').on('click', function() {
 		});
 });
 
+// Create a New Animal On Click Button
 $('#addAnimal').on('click', function() {
 	$('#animalAction').empty();
+	$('#searchBarDisplay').css("display", "none");
 	$('#form').css("display", "block");
-})
+});
+
+//Create Search Bar Appear On Click
+$('#search').on('click', function() {
+	$('#animalAction').empty();
+	$('#form').css("display", "none");
+	$('#searchBarDisplay').css("display", "block");
+});
+
 	
