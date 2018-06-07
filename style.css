@@ -1,3 +1,35 @@
+body {
+	font-family: Arial, sans-serif;
+}
 .navbar {
 	background-color: black;
+}
+
+.card-img {
+	width: 30%;
+	height: 30%;
+}
+.card {
+	margin: 15px;
+}
+#unicorn {
+	width: 50px;
+	height: 50px;
+	border-radius: 15px;
+}
+h1 {
+	color: white;
+}
+h2 {
+	margin: 20px;
+}
+#form {
+	margin: 30px;
+	display: none;
+}
+form {
+	border-top-style: solid;
+	border-top-width: 2px;
+	border-top-color: grey;
+	padding: 10px;
 }

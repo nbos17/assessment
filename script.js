@@ -21,11 +21,28 @@ $('#seeAll').on('click', function() {
 		console.log(response.list);
 		console.log(response.list.length);
 
-		for (var i = 0; i < response.list.length; i++) {
+		for (let i = 0; i < response.list.length; i++) {
 			let animalName = response.list[i].commonName;
+			let imageURL = response.list[i].imageURL;
 			console.log(animalName);
+			let newCard = $("<div>");
+				newCard.addClass("card");
+			let cardTitle = $("<h2>");
+				cardTitle.addClass("card-title");
+				cardTitle.html(animalName);
+			let cardBody = $("<img>");
+				cardBody.addClass("card-img");
+				cardBody.attr("src", imageURL);
+			newCard.append(cardTitle, cardBody);
+
+			$('#animalAction').append(newCard);
 		}
 
 		});
 });
+
+$('#addAnimal').on('click', function() {
+	$('#animalAction').empty();
+	$('#form').css("display", "block");
+})
 	

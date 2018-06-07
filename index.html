@@ -17,17 +17,47 @@
 <body>
 
 	<div class="navbar">
-		<h1>Test</h1>
+			<h1>Welcome To the Fantasy Zoo</h1>
+			<img id="unicorn" src="unicorn.jpg">
 	</div>
 
 	<div class="container">
 		<div class="row">
+			<h2>What Would you like to Do Today?</h2>
+		</div>
+
+		<div class="row">
 			<div class="col-md-12">
-				<button id="seeAll">See all Animals</button>
+				<button class="btn btn-primary" id="seeAll">See All Creatures</button>
+				<button class="btn btn-primary" id="search">Search For a Creature</button>
+				<button class="btn btn-primary" id="addAnimal">Add to Creatures</button>
 			</div>
 		</div>
 		<div class="row">
-			<div class="card"></div>
+			<div id="animalAction" class=col-md-12></div>
+		</div>
+
+		<div id="form">
+			<h2>Create A New Creature</h2>
+			<form>
+			  <div class="form-group">
+			    <label for="commonName">Common Name: </label>
+			    <input type="text" class="form-control" id="common" placeholder="Enter common name">
+			  </div>
+			  <div class="form-group">
+			    <label for="scientificName">Scientific Name: </label>
+			    <input type="text" class="form-control" id="scientific" placeholder="Enter Scientific Name">
+			  </div>
+			  <div class="form-group">
+			    <label for="family">Family: </label>
+			    <input type="text" class="form-control" id="family" placeholder="Enter Family">
+			  </div>
+			  <div class="form-group">
+			    <label for="scientificName">Image URL: </label>
+			    <input type="text" class="form-control" id="image" placeholder="Enter link">
+			  </div>
+			  <button type="submit" class="btn btn-primary">Submit</button>
+			</form>
 		</div>
 
 	</div>
