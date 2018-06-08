@@ -91,3 +91,15 @@ form {
 	bottom: 60%;
 	left: 40%;
 }
+
+@media screen and (max-width: 975px) {
+	#seeMoreInfo {
+		left: 20%;
+	}
+}
+
+@media screen and (max-width: 650px) {
+	#seeMoreInfo {
+		left: 2px;
+	}
+}
