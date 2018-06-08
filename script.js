@@ -5,17 +5,12 @@ $('#seeAll').on('click', function() {
 	$('#form').css("display", "none");
 	$('#searchBarDisplay').css("display", "none");
 
-	
+
 	const url = "https://animalrestapi.azurewebsites.net/Animal/List?candidateID=7960d0e9-8701-4f34-906d-026ea6a3c10a";
 	const headers = {
 		"Content-Type" : "application/x-www-form-urlencoded"
 	}
-	// const dataSet = {
-	// 	"commonName" : "lizard",
-	// 	"scientificName" : "lalala",
-	// 	"family" : "reptile",
-	// 	"imageURL" : "www.lizard.com"
-	// }
+
 
 	$.ajax(url, {
 		method : "GET",
@@ -60,4 +55,36 @@ $('#search').on('click', function() {
 	$('#searchBarDisplay').css("display", "block");
 });
 
-	
+$('#createSubmit').on('click', function(e) {
+	e.preventDefault();
+	let commonName = $('#common').val();
+	let scientificName = $('#scientific').val();
+	let family = $('#family').val();
+	let imageURL = $('#image').val();
+
+	const dataSet = {
+		"commonName" : commonName,
+		"scientificName" : scientificName,
+		"family" : family,
+		"imageURL" : imageURL
+	}
+
+	console.log(dataSet);
+
+	const url = "https://animalrestapi.azurewebsites.net/Animal/Create?candidateID=7960d0e9-8701-4f34-906d-026ea6a3c10a";
+	const headers = {
+		"Content-Type" : "application/x-www-form-urlencoded"
+	}
+
+	$.ajax(url, {
+		method : "POST",
+		data : dataSet,
+		headers : headers,
+		dataType : 'json'
+	}).done(function(response) {
+		console.log(response);
+
+	});
+
+
+})
