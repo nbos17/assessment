@@ -58,11 +58,13 @@ form {
 	width: 100px;
 	margin: 10px;
 	background-color: black;
+	border-radius: 5px;
 }
 #seeMore {
 	width: 100px;
 	margin: 10px;
 	background-color: black;
+	border-radius: 5px;
 }
 #seeMoreInfo {
 	background-color: lightgrey;
