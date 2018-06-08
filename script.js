@@ -80,7 +80,6 @@ $('#createSubmit').on('click', function(e) {
 		"imageURL" : imageURL
 	}
 
-	console.log(dataSet);
 
 	const url = "https://animalrestapi.azurewebsites.net/Animal/Create?candidateID=7960d0e9-8701-4f34-906d-026ea6a3c10a";
 	const headers = {
@@ -104,7 +103,32 @@ $('#createSubmit').on('click', function(e) {
 });
 
 $(document).on('click', '#deleteAnimal', function() {
-	let a = this.value;
-	console.log("clicked", a);
+	let idNumber = this.value;
+	console.log(idNumber);
+
+	const url = "https://animalrestapi.azurewebsites.net/Animal/Delete?candidateID=7960d0e9-8701-4f34-906d-026ea6a3c10a";
+	const headers = {
+		"Content-Type" : "application/x-www-form-urlencoded"
+	}
+
+	if ((idNumber == 1) || (idNumber == 2) || (idNumber == 3)) {
+		alert("Cannot Delete This Item");
+	}
+	else {
+		$.ajax(url, {
+		method : "POST",
+		data : {
+			id : idNumber
+		},
+		headers : headers,
+		dataType : 'json'
+		}).done(function(response) {
+			console.log(response);
+			location.reload();
+			
+
+		});
+	}
+	
 });
 
