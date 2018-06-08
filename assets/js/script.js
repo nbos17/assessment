@@ -17,7 +17,6 @@ $('#seeAll').on('click', function() {
 
 	$.ajax(url, {
 		method : "GET",
-		//data : dataSet,
 		headers : headers,
 		dataType : 'json'
 	}).done(function(response) {
@@ -74,38 +73,45 @@ $('#search').on('click', function() {
 
 //Create New Animal API Call
 $('#createSubmit').on('click', function(e) {
+
 	e.preventDefault();
 	let commonName = $('#common').val();
 	let scientificName = $('#scientific').val();
 	let family = $('#family').val();
 	let imageURL = $('#image').val();
-
-	const dataSet = {
-		"commonName" : commonName,
-		"scientificName" : scientificName,
-		"family" : family,
-		"imageURL" : imageURL
+	
+	if (commonName == "") {
+		alert("Please Enter Name");
 	}
+	else {
+		
 
-
-	const url = "https://animalrestapi.azurewebsites.net/Animal/Create?candidateID=7960d0e9-8701-4f34-906d-026ea6a3c10a";
-	const headers = {
-		"Content-Type" : "application/x-www-form-urlencoded"
-	}
-
-	$.ajax(url, {
-		method : "POST",
-		data : dataSet,
-		headers : headers,
-		dataType : 'json'
-	}).done(function(response) {
-		console.log(response.status);
-		if (response.status === 'OK') {
-			$('#didCreate').html("Creature Added Successfully!");
+		const dataSet = {
+		 	"commonName" : commonName,
+			"scientificName" : scientificName,
+			"family" : family,
+			"imageURL" : imageURL
 		}
 
-	});
 
+		const url = "https://animalrestapi.azurewebsites.net/Animal/Create?candidateID=7960d0e9-8701-4f34-906d-026ea6a3c10a";
+		const headers = {
+			"Content-Type" : "application/x-www-form-urlencoded"
+		}
+
+		$.ajax(url, {
+			method : "POST",
+			data : dataSet,
+			headers : headers,
+			dataType : 'json'
+		}).done(function(response) {
+			console.log(response.status);
+			if (response.status === 'OK') {
+				$('#didCreate').html("Creature Added Successfully!");
+			}
+
+		});
+	}
 
 });
 
