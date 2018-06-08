@@ -1,3 +1,5 @@
+
+
 // See All Animals On Click Button
 $('#seeAll').on('click', function() {
 
@@ -33,10 +35,19 @@ $('#seeAll').on('click', function() {
 			let cardBody = $("<img>");
 				cardBody.addClass("card-img");
 				cardBody.attr("src", imageURL);
-			newCard.append(cardTitle, cardBody);
+			let deleteButton = $("<button>");
+				deleteButton.addClass("btn-primary");
+				deleteButton.attr("id", "deleteAnimal");
+				deleteButton.attr("value", response.list[i].id);
+				deleteButton.html("Delete");
+			newCard.append(cardTitle, cardBody, deleteButton);
 
 			$('#animalAction').append(newCard);
+
+
 		}
+		
+		
 
 		});
 });
@@ -82,9 +93,18 @@ $('#createSubmit').on('click', function(e) {
 		headers : headers,
 		dataType : 'json'
 	}).done(function(response) {
-		console.log(response);
+		console.log(response.status);
+		if (response.status === 'OK') {
+			$('#didCreate').html("Creature Added Successfully!");
+		}
 
 	});
 
 
-})
+});
+
+$(document).on('click', '#deleteAnimal', function() {
+	let a = this.value;
+	console.log("clicked", a);
+});
+
