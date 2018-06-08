@@ -52,10 +52,8 @@ $('#seeAll').on('click', function() {
 
 
 		}
-		
-		
 
-		});
+	});
 });
 
 // Create a New Animal On Click Button
@@ -74,6 +72,7 @@ $('#search').on('click', function() {
 
 });
 
+//Create New Animal API Call
 $('#createSubmit').on('click', function(e) {
 	e.preventDefault();
 	let commonName = $('#common').val();
@@ -163,11 +162,11 @@ $(document).on('click', '#seeMore', function(e) {
 			$('#moreFamily').html(response.animal.family);
 			$('#seeMoreInfo').css("display", "block");
 
-
 		});
 
 })
 
+//Go back Card Button
 $(document).on('click', '#goBack', function(e) {
 
 	e.preventDefault();

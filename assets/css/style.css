@@ -82,3 +82,10 @@ form {
 #moreName {
 	margin-left: 10px;
 }
+#goBack {
+	background-color: black;
+	color: white;
+	position: relative;
+	bottom: 60%;
+	left: 40%;
+}
