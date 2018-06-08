@@ -1,20 +1,22 @@
 body {
 	font-family: Arial, sans-serif;
+	height: 100%;
 }
 .navbar {
 	background-color: black;
 }
 
 .card-img {
-	width: 40%;
-	height: 40%;
+	width: 50%;
+	height: 50%;
 	margin: 10px;
 }
 .card {
 	margin : 30px 15px 15px 0px;
-	width: 300px;
-	height: 220px;
+	width: 330px;
+	height: 425px;
 	align-items: center;
+	text-align: center;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 	display: inline-block;
 }
@@ -41,12 +43,42 @@ form {
 	padding: 10px;
 }
 #searchBarDisplay {
-	margin: 30px;
 	display: none;
+	background-color: yellow;
+	padding: 75px;
 }
 .btn-primary {
 	background-color: grey;
 	border-color: grey;
 	margin: 10px 10px 10px 0px;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	display: block;
+}
+#deleteAnimal {
+	width: 100px;
+	margin: 10px;
+	background-color: black;
+}
+#seeMore {
+	width: 100px;
+	margin: 10px;
+	background-color: black;
+}
+#seeMoreInfo {
+	background-color: lightgrey;
+	border-style: solid;
+	border-width: 2px;
+	position: absolute;
+	top: 30%;
+	left: 35%;
+	z-index: 15;
+	height: 500px;
+	width: 500px;
+	padding: 20px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	display: none;
+
+}
+#moreName {
+	margin-left: 10px;
 }

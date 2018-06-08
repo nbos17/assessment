@@ -6,6 +6,7 @@ $('#seeAll').on('click', function() {
 	$('#animalAction').empty();
 	$('#form').css("display", "none");
 	$('#searchBarDisplay').css("display", "none");
+	$('#seeMoreInfo').css("display", "none");
 
 
 	const url = "https://animalrestapi.azurewebsites.net/Animal/List?candidateID=7960d0e9-8701-4f34-906d-026ea6a3c10a";
@@ -40,7 +41,12 @@ $('#seeAll').on('click', function() {
 				deleteButton.attr("id", "deleteAnimal");
 				deleteButton.attr("value", response.list[i].id);
 				deleteButton.html("Delete");
-			newCard.append(cardTitle, cardBody, deleteButton);
+			let seeMoreButton = $("<button>");
+				seeMoreButton.addClass("btn-primary");
+				seeMoreButton.attr("id", "seeMore");
+				seeMoreButton.attr("value", response.list[i].id)
+				seeMoreButton.html("See More");
+			newCard.append(cardTitle, cardBody, deleteButton, seeMoreButton);
 
 			$('#animalAction').append(newCard);
 
@@ -57,6 +63,7 @@ $('#addAnimal').on('click', function() {
 	$('#animalAction').empty();
 	$('#searchBarDisplay').css("display", "none");
 	$('#form').css("display", "block");
+	$('#seeMoreInfo').css('display', 'none');
 });
 
 //Create Search Bar Appear On Click
@@ -64,6 +71,7 @@ $('#search').on('click', function() {
 	$('#animalAction').empty();
 	$('#form').css("display", "none");
 	$('#searchBarDisplay').css("display", "block");
+
 });
 
 $('#createSubmit').on('click', function(e) {
@@ -102,6 +110,7 @@ $('#createSubmit').on('click', function(e) {
 
 });
 
+//Delete Button Click
 $(document).on('click', '#deleteAnimal', function() {
 	let idNumber = this.value;
 	console.log(idNumber);
@@ -115,6 +124,7 @@ $(document).on('click', '#deleteAnimal', function() {
 		alert("Cannot Delete This Item");
 	}
 	else {
+
 		$.ajax(url, {
 		method : "POST",
 		data : {
@@ -125,10 +135,42 @@ $(document).on('click', '#deleteAnimal', function() {
 		}).done(function(response) {
 			console.log(response);
 			location.reload();
-			
 
 		});
 	}
 	
 });
 
+//See More Card Button
+$(document).on('click', '#seeMore', function(e) {
+
+	e.preventDefault();
+	let number = this.value;
+
+	const url = "https://animalrestapi.azurewebsites.net/Animal/Id/" + number + "?candidateID=7960d0e9-8701-4f34-906d-026ea6a3c10a";
+	const headers = {
+		"Content-Type" : "application/x-www-form-urlencoded"
+	}
+
+	$.ajax(url, {
+		method : "GET",
+		headers : headers,
+		dataType : 'json'
+		}).done(function(response) {
+			console.log(response);
+			$('#moreName').html(response.animal.commonName);
+			$('#moreScience').html(response.animal.scientificName);
+			$('#moreFamily').html(response.animal.family);
+			$('#seeMoreInfo').css("display", "block");
+
+
+		});
+
+})
+
+$(document).on('click', '#goBack', function(e) {
+
+	e.preventDefault();
+	$('#seeMoreInfo').css('display', 'none');
+
+})
